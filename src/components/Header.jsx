@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Menu } from "lucide-react";
+import { ThemeContext } from "../Context/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 const Header = () => {
   const [ismenuOpen, setIsMenuOpen] = useState(false);
+  const { storedValue, setStoredValue } = useContext(ThemeContext);
+
+  console.log(storedValue);
+
+  useEffect(() => {
+    if(storedValue) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }, [storedValue]);
+
+  console.log(storedValue);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a] backdrop-blur-sm shadow-md border-b border-gray-300/30">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm shadow-md border-b border-gray-300/30 ">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-white text-3xl font-semibold cursor-pointer tracking-normal">
+          <div
+            className={`text-3xl font-semibold cursor-pointer tracking-normal`}
+          >
             Hassan
           </div>
 
@@ -59,6 +76,13 @@ const Header = () => {
           </button>
         </div>
 
+        <button
+          className="flex absolute right-10 top-[40%]"
+          onClick={() => setStoredValue(!storedValue)}
+        >
+          {storedValue ? <Moon /> : <Sun />}
+        </button>
+
         {/*  Mobile Menu*/}
         {ismenuOpen && (
           <nav className="md:hidden flex flex-col space-y-3 mt-4">
@@ -96,6 +120,10 @@ const Header = () => {
             </a>
             <button className="px-6 py-2 bg-white text-gray-900 rounded hover:bg-gray-100 transition-colors w-fit">
               Contact
+            </button>
+
+            <button onClick={() => setStoredValue(!storedValue)}>
+              {storedValue ? <Moon /> : <Sun />}
             </button>
           </nav>
         )}

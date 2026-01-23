@@ -2,7 +2,7 @@ import { User } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-[#0a0a0a]">
+    <section id="about" className="py-24">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
@@ -13,13 +13,22 @@ export default function About() {
             </div>
           </div>
 
-          <div>
-            <h2 className="text-4xl font-bold text-white mb-6">
+          <div
+            style={{
+              color: "var(--text-color)",
+            }}
+          >
+            <h2 className="text-4xl font-bold  mb-6">
               I am Rakesh, a full stack web developer and a programmer working
               remotely in my home at Dhaka, Bangladesh
             </h2>
 
-            <div className="space-y-4 text-gray-300 leading-relaxed">
+            <div
+              className="space-y-4 text-gray-600 leading-relaxed"
+              style={{
+                color: "var(--text-color)",
+              }}
+            >
               <p>
                 I've spent the last 3+ years learning and working across
                 different areas of development: front-end development, back-end
@@ -34,7 +43,7 @@ export default function About() {
               </p>
             </div>
 
-            <button className="mt-8 px-8 py-3 bg-white text-gray-900 rounded font-medium hover:bg-gray-100 transition-colors">
+            <button className="mt-8 px-8 py-3 bg-gray-200 text-gray-900 rounded font-medium hover:bg-gray-100 transition-colors">
               Download Resume
             </button>
           </div>
